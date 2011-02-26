@@ -7,8 +7,23 @@
   <%= csrf_meta_tag %>
 </head>
 <body>
+<div id="container">
+  <div id="header">
+    <span>Senthil Kumar Bhaskaran</span>
+    <a href="#">< HOME ></a>
+    <a href="#">< ABOUT ME ></a>
+    <a href="#">< MY PROFILE ></a>
+    <a href="#">< MY BIO ></a>
+    <a href="#">< CONTACT ME ></a>
+  </div>
+  <div id="content">
+    <%= yield %>
+  </div>
+  <div class="clearfooter"></div>
+  
+</div>
+<div id="footer">
 
-<%= yield %>
-
+</div>
 </body>
 </html>
