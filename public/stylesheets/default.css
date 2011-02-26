@@ -104,7 +104,7 @@ body {
 }
 
 #header {
-    padding: 50px;
+    /*padding: 50px;*/
     border-bottom: 1px dotted #e1a1a1;
 }
 
@@ -128,3 +128,43 @@ body {
     height: 80px;
     clear: both;
 }
+
+/* Animated Jquery menu */
+
+#page-wrap {
+	width: 820px;
+	margin: 20px auto;
+	/*padding: 20px;*/
+}
+
+.button {
+	float: left;
+	margin: 10px;
+}
+
+/*home button*/
+#home {
+	display: block;
+	padding: 30px;
+}
+#home-button {
+	opacity: 1.0;
+    color:#F7C66A;
+    cursor:pointer;
+	border-bottom: 1px solid #800C03;
+}
+
+/* Contact Button */
+#contac, #mybio, #myprofile, #aboutme {
+	display: none;
+	padding: 30px;
+}
+
+#contact-button, #mybio-button, #myprofile-button, #aboutme-button  {
+	opacity: 0.5;
+    color:#F7C66A;
+    cursor:pointer;    
+	border-bottom: 1px solid #800C03;
+}
+
+/*home buttom*/

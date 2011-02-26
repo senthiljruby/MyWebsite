@@ -1,29 +1,82 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Senthil</title>
-  <%= stylesheet_link_tag :all %>
-  <%= javascript_include_tag :defaults %>
-  <%= csrf_meta_tag %>
-</head>
-<body>
-<div id="container">
-  <div id="header">
-    <span>Senthil Kumar Bhaskaran</span>
-    <a href="#">< HOME ></a>
-    <a href="#">< ABOUT ME ></a>
-    <a href="#">< MY PROFILE ></a>
-    <a href="#">< MY BIO ></a>
-    <a href="#">< CONTACT ME ></a>
-  </div>
-  <div id="content">
-    <%= yield %>
-  </div>
-  <div class="clearfooter"></div>
-  
-</div>
-<div id="footer">
+    <head>
+      <title>Senthil</title>
+      <%= stylesheet_link_tag :all %>
+      <%= javascript_include_tag "jquery" %>
+      <%= csrf_meta_tag %>
+      <script type="text/javascript">
+          $(function() {
+              $("#aboutme-button").css({
+                  opacity: 0.3,
+                  color: "#FFF"
+              });
+              $("#contact-button").css({
+                  opacity: 0.3,
+                  color: "#FFF"
+              });
+              $("#myprofile-button").css({
+                  opacity: 0.3,
+                  color: "#FFF"
+              });
+              $("#mybio-button").css({
+                  opacity: 0.3,
+                  color: "#FFF"
+              });
 
-</div>
-</body>
+              $("#page-wrap div.button").click(function() {
+                  $clicked = $(this);
+                  // if the button is not already "transformed" AND is not animated
+                  if ($clicked.css("opacity") != "1" && $clicked.is(":not(animated)")) {
+                      $clicked.animate({
+                          opacity: 1,
+                          borderWidth: 10
+                      }, 600);
+                      $clicked.css("color", "#F7C66A");
+                      // each button div MUST have a "xx-button" and the target div must have an id "xx"
+                      var idToLoad = $clicked.attr("id").split('-');
+                      //we search trough the content for the visible div and we fade it out
+                      $("#content").find("div:visible").fadeOut("fast", function() {
+                          //once the fade out is completed, we start to fade in the right div
+                          $(this).parent().find("#" + idToLoad[0]).fadeIn();
+                      })
+                  }
+                  //we reset the other buttons to default style
+                  $clicked.siblings(".button").animate({
+                      opacity: 0.5,
+                      borderWidth: 1
+                  }, 600);
+                  $clicked.siblings(".button").css("color", "#FFF");
+                  
+              });
+          });
+      </script>
+    </head>
+    
+    <body>
+    <div id="container">
+      <div id="header">
+        <div id="page-wrap">
+          <div class="button" style="font-size:22px;"><span style="color:#F7C66A">Senthil Kumar</span> Bhaskaran</div>
+          <div id="home-button" class="button"> < HOME ></div>
+          <div id="aboutme-button" class="button"> < ABOUT ME ></div>
+          <div id="myprofile-button" class="button"> < MY PROFILE ></div>
+          <div id="mybio-button" class="button"> < MY BIO ></div>
+          <div id="contact-button" class="button"> < CONTACT ME ></div>
+          <div class="clear"></div>
+          <div id="home"></div>
+          <div id="aboutme"></div>
+          <div id="contact"></div>
+        </div>
+      </div>
+      <div id="content">
+        <%= yield %>
+      </div>
+      <div class="clearfooter"></div>
+      
+    </div>
+
+    <div id="footer"></div>
+
+    </body>
 </html>
