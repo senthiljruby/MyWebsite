@@ -100,7 +100,8 @@ html, body {
 
 body {
     background-image: url("/images/blue_withoutlaptop2.png");
-    background-position: center;
+  /*  background-position: center; */
+    background-position:center top;
     color: #cccccc;
 }
 
