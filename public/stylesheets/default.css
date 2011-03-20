@@ -99,7 +99,8 @@ html, body {
 
 
 body {
-    background-image: url("/images/background.png");
+    background-image: url("/images/blue_withoutlaptop2.png");
+    background-position: center;
     color: #cccccc;
 }
 
