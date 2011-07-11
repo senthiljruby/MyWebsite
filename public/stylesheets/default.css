@@ -101,13 +101,14 @@ html, body {
 body {
     background-image: url("/images/blue_withoutlaptop2.png");
   /*  background-position: center; */
+    background-repeat: no-repeat;
     background-position:center top;
     color: #cccccc;
 }
 
 #header {
     /*padding: 50px;*/
-    border-bottom: 1px dotted #e1a1a1;
+    /*border-bottom: 1px dotted #e1a1a1; */
 }
 
 /*#content {*/
@@ -134,8 +135,10 @@ body {
 /* Animated Jquery menu */
 
 #page-wrap {
-	width: 820px;
-	margin: 20px auto;
+	/* width: 820px;
+	margin: 20px auto; */
+	margin: 36px 210px auto;
+    width: 150px;
 	/*padding: 20px;*/
 }
 

@@ -4,6 +4,8 @@
       <title>Senthil</title>
       <%= stylesheet_link_tag :all %>
       <%= javascript_include_tag "jquery" %>
+      <script src="http://ajax.googleapis.com/ajax/libs/dojo/1.6.0/dojo/dojo.xd.js" data-dojo-config="isDebug:true,parseOnLoad:true">
+      </script>
       <%= csrf_meta_tag %>
       <script type="text/javascript">
           $(function() {
@@ -50,19 +52,31 @@
                   
               });
           });
-      </script>
+          
+          // Require the Dialog class
+          dojo.require("dijit.Dialog");
+          // Show the dialog
+          function showDialog() {
+            dijit.byId("terms").show();
+          }
+      
+          //  Hide the dialog
+          function hideDialog() {
+            dijit.byId("terms").hide();
+          }
+      </script>    
     </head>
     
-    <body>
+  <body class="claro">
     <div id="container">
       <div id="header">
+        <div class="" style="font-size:22px; margin: 36px 210px auto; text-align:center"><span style="color:#F7C66A">Senthil Kumar</span> Bhaskaran</div>
         <div id="page-wrap">
-          <div class="button" style="font-size:22px;"><span style="color:#F7C66A">Senthil Kumar</span> Bhaskaran</div>
           <div id="home-button" class="button"> < HOME ></div>
           <div id="aboutme-button" class="button"> < ABOUT ME ></div>
           <div id="myprofile-button" class="button"> < MY PROFILE ></div>
           <div id="mybio-button" class="button"> < MY BIO ></div>
-          <div id="contact-button" class="button"> < CONTACT ME ></div>
+          <div id="contact-button" class="button" onclick="showDialog();"> < CONTACT ME ></div>
           <div class="clear"></div>
           <div id="home"></div>
           <div id="aboutme"></div>
@@ -70,6 +84,16 @@
         </div>
       </div>
       <div id="content">
+      <div class="dijitHidden">
+          <div data-dojo-type="dijit.Dialog" style="width:600px;" data-dojo-props="title:'Terms and Conditions'" id="terms">
+              <p><strong>Please agree to the following terms and conditions:</strong></p>
+              <div style="height:160px;overflow-y:scroll;border:1px solid #769dc4;padding:0 10px;width:600px"><p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sed suscipit massa. Aenean vel turpis tincidunt velit gravida venenatis. In iaculis urna non quam tincidunt elementum. Nunc pellentesque aliquam dui, ac facilisis massa sollicitudin et. Donec tincidunt vulputate ultrices. Duis eu risus ut ipsum auctor scelerisque non quis ante. Nam tempor lobortis justo, et rhoncus mauris cursus et. Mauris auctor congue lectus auctor ultrices. Aenean quis feugiat purus. Cras ornare vehicula tempus. Nunc placerat, lorem adipiscing condimentum sagittis, augue velit ornare odio, eget semper risus est et erat....
+              </p></div>
+              <button onclick="hideDialog();">I Agree</button>
+              <button onclick="alert('You must agree!');">I Don't Agree</button>
+          </div>
+      </div>
         <%= yield %>
       </div>
       <div class="clearfooter"></div>
